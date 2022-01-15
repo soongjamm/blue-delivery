@@ -1,6 +1,6 @@
 package com;
 
-import static com.bluedelivery.domain.authentication.TokenType.BEARER;
+import static com.bluedelivery.authentication.domain.TokenType.BEARER;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
@@ -16,12 +16,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import com.bluedelivery.application.authentication.AuthenticationService;
-import com.bluedelivery.application.authentication.LoginTarget;
-import com.bluedelivery.application.authentication.adapter.JwtAuthenticationService;
-import com.bluedelivery.domain.authentication.Authentication;
-import com.bluedelivery.domain.user.User;
-import com.bluedelivery.domain.user.UserRepository;
+import com.bluedelivery.authentication.application.AuthenticationService;
+import com.bluedelivery.authentication.application.LoginTarget;
+import com.bluedelivery.authentication.application.adapter.JwtAuthenticationService;
+import com.bluedelivery.authentication.domain.Authentication;
+import com.bluedelivery.user.domain.User;
+import com.bluedelivery.user.domain.UserRepository;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

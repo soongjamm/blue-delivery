@@ -49,7 +49,7 @@ mybatis:
     com.bluedelivery.domain.shop,
     com.bluedelivery.domain.category,
     com.bluedelivery.application.shop.businesshour,
-    com.bluedelivery.domain.closingday,
+    com.bluedelivery.shop.domain.closingday,
     com.bluedelivery.domain.suspension,
     com.bluedelivery.user.domain,
     com.bluedelivery.utility,

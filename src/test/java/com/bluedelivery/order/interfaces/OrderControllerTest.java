@@ -23,9 +23,9 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
-import com.bluedelivery.api.authentication.AuthenticatedUserArgumentResolver;
-import com.bluedelivery.application.authentication.AuthenticationService;
-import com.bluedelivery.domain.authentication.Authentication;
+import com.bluedelivery.authentication.interfaces.AuthenticatedUserArgumentResolver;
+import com.bluedelivery.authentication.application.AuthenticationService;
+import com.bluedelivery.authentication.domain.Authentication;
 import com.bluedelivery.order.application.OrderService;
 import com.bluedelivery.order.domain.Order;
 import com.bluedelivery.order.domain.OrderItem;

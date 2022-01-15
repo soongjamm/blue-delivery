@@ -2,9 +2,9 @@ package com.bluedelivery;
 
 import java.util.List;
 
-import com.bluedelivery.domain.menu.Menu;
-import com.bluedelivery.domain.menu.MenuOption;
-import com.bluedelivery.domain.menu.MenuOptionGroup;
+import com.bluedelivery.menu.domain.Menu;
+import com.bluedelivery.menu.domain.MenuOption;
+import com.bluedelivery.menu.domain.MenuOptionGroup;
 import com.bluedelivery.order.domain.Order;
 import com.bluedelivery.order.domain.OrderItem;
 import com.bluedelivery.order.interfaces.Cart;

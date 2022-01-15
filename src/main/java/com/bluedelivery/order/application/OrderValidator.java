@@ -6,12 +6,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.bluedelivery.domain.menu.Menu;
-import com.bluedelivery.domain.menu.MenuRepository;
-import com.bluedelivery.domain.shop.Shop;
-import com.bluedelivery.domain.shop.ShopRepository;
-import com.bluedelivery.domain.user.User;
-import com.bluedelivery.domain.user.UserRepository;
+import com.bluedelivery.menu.domain.Menu;
+import com.bluedelivery.menu.domain.MenuRepository;
+import com.bluedelivery.shop.domain.Shop;
+import com.bluedelivery.shop.domain.ShopRepository;
+import com.bluedelivery.user.domain.User;
+import com.bluedelivery.user.domain.UserRepository;
 import com.bluedelivery.order.domain.Order;
 
 import lombok.RequiredArgsConstructor;

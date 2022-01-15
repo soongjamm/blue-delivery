@@ -19,7 +19,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.bluedelivery.domain.menu.Menu;
+import com.bluedelivery.menu.domain.Menu;
 import com.bluedelivery.payment.Payment;
 
 import lombok.Builder;

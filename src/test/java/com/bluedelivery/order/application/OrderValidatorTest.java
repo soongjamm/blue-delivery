@@ -20,12 +20,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.bluedelivery.domain.menu.MenuRepository;
-import com.bluedelivery.domain.shop.BusinessHour;
-import com.bluedelivery.domain.shop.Shop;
-import com.bluedelivery.domain.shop.ShopRepository;
-import com.bluedelivery.domain.user.User;
-import com.bluedelivery.domain.user.UserRepository;
+import com.bluedelivery.menu.domain.MenuRepository;
+import com.bluedelivery.shop.domain.BusinessHour;
+import com.bluedelivery.shop.domain.Shop;
+import com.bluedelivery.shop.domain.ShopRepository;
+import com.bluedelivery.user.domain.User;
+import com.bluedelivery.user.domain.UserRepository;
 import com.bluedelivery.order.domain.Order;
 
 @ExtendWith(MockitoExtension.class)

@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bluedelivery.common.response.HttpResponse;
-import com.bluedelivery.domain.authentication.Authentication;
+import com.bluedelivery.authentication.domain.Authentication;
 import com.bluedelivery.order.application.OrderService;
 import com.bluedelivery.order.domain.Order;
 import com.bluedelivery.order.interfaces.Cart;
