@@ -34,10 +34,7 @@ class EventHandlerTest {
 
     @Autowired
     private LoadOrderPort loadOrderPort;
-    
-    @Autowired
-    private ApplicationEventPublisher publisher;
-    
+
     @Autowired
     private OutboxRepository outboxRepository;
     
@@ -49,7 +46,7 @@ class EventHandlerTest {
     
     @BeforeEach
     void setup() {
-        placeOrderUsecase = new PlaceOrderService(saveOrderPort, orderMapper, paymentService, publisher);
+        placeOrderUsecase = new PlaceOrderService(saveOrderPort, orderMapper, paymentService);
     }
 
     @Test

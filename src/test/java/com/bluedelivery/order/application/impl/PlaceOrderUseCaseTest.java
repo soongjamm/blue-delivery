@@ -33,10 +33,7 @@ class PlaceOrderUseCaseTest {
     
     @Mock
     private PaymentService paymentService;
-    
-    @Mock
-    private ApplicationEventPublisher publisher;
-    
+
     private Order.OrderForm form;
     private Order order;
     private Payment.PaymentForm paymentForm;
@@ -44,7 +41,7 @@ class PlaceOrderUseCaseTest {
     
     @BeforeEach
     void setup() {
-        placeOrderUsecase = new PlaceOrderService(saveOrderPort, orderMapper, paymentService, publisher);
+        placeOrderUsecase = new PlaceOrderService(saveOrderPort, orderMapper, paymentService);
         form = orderForm().build();
         order = Order.place(form);
         paymentForm = new Payment.PaymentForm(order);

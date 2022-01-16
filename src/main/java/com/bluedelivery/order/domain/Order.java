@@ -19,6 +19,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.bluedelivery.common.event.EventEnvelope;
 import com.bluedelivery.menu.domain.Menu;
 import com.bluedelivery.payment.Payment;
 
@@ -27,6 +28,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import org.springframework.data.domain.AbstractAggregateRoot;
 
+@EqualsAndHashCode(of = "orderId")
 @Entity
 @Table(name = "ORDERS")
 public class Order extends AbstractAggregateRoot<Order> {
@@ -62,7 +64,7 @@ public class Order extends AbstractAggregateRoot<Order> {
         orderItems.forEach(item -> item.setOrder(this));
         this.orderItems.addAll(orderItems);
         this.createDate = createDate;
-//        andEvent(this);
+        andEvent(envelope());
     }
 
     public static Order place(OrderForm form) {
@@ -74,7 +76,7 @@ public class Order extends AbstractAggregateRoot<Order> {
                 .createDate(LocalDateTime.now())
                 .build();
     }
-    
+
     public void pay(Payment payment) {
         if (payment.isDenied()) {
             throw new IllegalStateException("결제 실패");
@@ -82,31 +84,31 @@ public class Order extends AbstractAggregateRoot<Order> {
         this.orderStatus = OrderStatus.PAYED;
         this.paymentId = payment.id();
     }
-    
+
     public List<Long> getOrderItemIds() {
         return orderItems.stream().map(OrderItem::getMenuId).collect(toList());
     }
-    
+
     public int totalOrderAmount() {
         return orderItems.stream().mapToInt(OrderItem::totalOrderAmount).sum();
     }
-    
+
     public Long getOrderId() {
         return orderId;
     }
-    
+
     public OrderStatus getStatus() {
         return this.orderStatus;
     }
-    
+
     public Long getUserId() {
         return userId;
     }
-    
+
     public Long getShopId() {
         return shopId;
     }
-    
+
     public Long getPaymentId() {
         return paymentId;
     }
@@ -127,32 +129,24 @@ public class Order extends AbstractAggregateRoot<Order> {
                     .validate(orderItem);
         }
     }
-    
+
     public List<OrderItem> getOrderItems() {
         return orderItems;
     }
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        Order order = (Order) obj;
-        return Objects.equals(orderId, order.orderId);
+
+    private EventEnvelope envelope() {
+        return EventEnvelope.builder()
+                .aggregateId(this.getOrderId())
+                .aggregateType(Order.class.getSimpleName())
+                .event(OrderCreatedEvent.from(this))
+                .eventType(OrderCreatedEvent.class.getSimpleName())
+                .build();
     }
-    
-    @Override
-    public int hashCode() {
-        return Objects.hash(orderId);
-    }
-    
     @EqualsAndHashCode
     @Builder
     @Getter
     public static class OrderForm {
+
         private Long shopId;
         private Long userId;
         private List<OrderItem> orderItems;

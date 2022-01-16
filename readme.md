@@ -1,41 +1,53 @@
 # Blue Delivery
 
-배달의민족 클론 코딩 프로젝트입니다. 
+배달앱 서버 구현 프로젝트 
 
 ---
-
-## 기능정의
-**가게**  
-[위키참조](https://github.com/f-lab-edu/blue-delivery/wiki/%EA%B8%B0%EB%8A%A5%EC%A0%95%EC%9D%98:-%EA%B0%80%EA%B2%8C")
-
-**고객**
-
-- 회원가입/로그인, 정보 수정, 탈퇴
-- 가게/음식 검색하기
-- 주문할 음식목록 만들기 (장바구니)
-- 주문하기
-- 결제하기
-- 리뷰작성
-
-**라이더**
-
-- 배달 요청 수신하기
-- 배달 완료 처리하기
-
-
-
 ## 사용 기술
 
 - Java11
 - Spring boot
-- Gradle
-- MyBatis
+- Spring Data JPA
 - MySQL
+- Kafka
+- Redis
+- Gradle
 - Docker
 
 
+### Hexagonal Architecture 참고
+```
+├── order
+│   ├── adapter
+│   │   ├── in
+│   │   │   └── web
+│   │   │       └── PlaceOrderController.java
+│   │   └── out
+│   │       └── persistence
+│   │           ├── OrderPersistenceAdapter.java
+│   │           └── OrderRepositoryJpa.java
+│   ├── application
+│   │   ├── OrderMapper.java
+│   │   ├── OrderValidator.java
+│   │   ├── PlaceOrderService.java
+│   │   └── port
+│   │       ├── in
+│   │       │   └── PlaceOrderUseCase.java
+│   │       └── out
+│   │           ├── LoadOrderPort.java
+│   │           └── SaveOrderPort.java
+│   ├── domain
+│   │   ├── ExceptionMessage.java
+│   │   ├── Order.java
+│   │   ├── OrderCreatedEvent.java
+│   │   ├── OrderDetails.java
+│   │   └── OrderItem.java
+│   ├── infra
+│   │   └── OrderMessageRelay.java
+│   └── interfaces
+│       └── Cart.java
 
-## 브랜치 전략
+```
 
 ### Github Flow
 
