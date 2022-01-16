@@ -1,6 +1,4 @@
-package com.bluedelivery.order.application;
-
-import com.bluedelivery.order.domain.Order;
+package com.bluedelivery.order.domain;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

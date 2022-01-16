@@ -25,11 +25,12 @@ import com.bluedelivery.payment.Payment;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import org.springframework.data.domain.AbstractAggregateRoot;
 
 @Entity
 @Table(name = "ORDERS")
-public class Order {
-    
+public class Order extends AbstractAggregateRoot<Order> {
+
     public enum OrderStatus {
         CREATED, PAYED, ACCEPTED, IN_DELIVERY, DELIVERED;
     }
@@ -51,7 +52,7 @@ public class Order {
     }
     
     @Builder
-    public Order(Long orderId, OrderStatus orderStatus,
+    private Order(Long orderId, OrderStatus orderStatus,
                  Long userId, Long shopId, List<OrderItem> orderItems,
                  LocalDateTime createDate) {
         this.orderId = orderId;
@@ -61,6 +62,17 @@ public class Order {
         orderItems.forEach(item -> item.setOrder(this));
         this.orderItems.addAll(orderItems);
         this.createDate = createDate;
+//        andEvent(this);
+    }
+
+    public static Order place(OrderForm form) {
+        return Order.builder()
+                .shopId(form.shopId)
+                .userId(form.userId)
+                .orderItems(form.orderItems)
+                .orderStatus(OrderStatus.CREATED)
+                .createDate(LocalDateTime.now())
+                .build();
     }
     
     public void pay(Payment payment) {
@@ -76,7 +88,7 @@ public class Order {
     }
     
     public int totalOrderAmount() {
-        return orderItems.stream().mapToInt(item -> item.totalOrderAmount()).sum();
+        return orderItems.stream().mapToInt(OrderItem::totalOrderAmount).sum();
     }
     
     public Long getOrderId() {
@@ -144,16 +156,5 @@ public class Order {
         private Long shopId;
         private Long userId;
         private List<OrderItem> orderItems;
-        
-        public Order createOrder() {
-            Order order = Order.builder()
-                    .shopId(this.shopId)
-                    .userId(this.userId)
-                    .orderItems(this.orderItems)
-                    .orderStatus(OrderStatus.CREATED)
-                    .createDate(LocalDateTime.now())
-                    .build();
-            return order;
-        }
     }
 }

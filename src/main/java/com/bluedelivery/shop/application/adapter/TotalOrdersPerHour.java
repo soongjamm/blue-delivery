@@ -14,7 +14,7 @@ import com.bluedelivery.shop.application.OrderRankingStrategy;
 import com.bluedelivery.shop.domain.Shop;
 import com.bluedelivery.shop.domain.ShopRepository;
 import com.bluedelivery.order.domain.Order;
-import com.bluedelivery.order.domain.OrderRepository;
+import com.bluedelivery.order.adapter.out.persistence.OrderRepositoryJpa;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,13 +24,13 @@ public class TotalOrdersPerHour implements OrderRankingStrategy {
 
     private final String key = "shop:ranking:";
 
-    private final OrderRepository orderRepository;
+    private final OrderRepositoryJpa orderRepositoryJpa;
     private final ShopRepository shopRepository;
     private final RedisTemplate redisTemplate;
 
-    public TotalOrdersPerHour(OrderRepository orderRepository, ShopRepository shopRepository,
-                               RedisTemplate redisTemplate) {
-        this.orderRepository = orderRepository;
+    public TotalOrdersPerHour(OrderRepositoryJpa orderRepositoryJpa, ShopRepository shopRepository,
+                              RedisTemplate redisTemplate) {
+        this.orderRepositoryJpa = orderRepositoryJpa;
         this.shopRepository = shopRepository;
         this.redisTemplate = redisTemplate;
     }
@@ -80,7 +80,7 @@ public class TotalOrdersPerHour implements OrderRankingStrategy {
     private List<Order> findAllOrdersBetweenTime() {
         LocalDateTime currentTime = LocalDateTime.now();
 
-        List<Order> orderListByTime = orderRepository.findAll()
+        List<Order> orderListByTime = orderRepositoryJpa.findAll()
                 .stream()
                 .filter(o -> o.getCreateDate().getHour() == currentTime.getHour())
                 .collect(Collectors.toList());

@@ -1,6 +1,6 @@
 package com.bluedelivery.order.application;
 
-import static com.bluedelivery.OrderData.*;
+import static com.bluedelivery.Fixtures.*;
 import static com.bluedelivery.order.domain.ExceptionMessage.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;

@@ -1,6 +1,6 @@
 package com.bluedelivery.order.domain;
 
-import static com.bluedelivery.OrderData.*;
+import static com.bluedelivery.Fixtures.*;
 import static java.util.Collections.*;
 import static org.assertj.core.api.Assertions.assertThat;
 

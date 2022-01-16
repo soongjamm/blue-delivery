@@ -11,7 +11,7 @@ import com.bluedelivery.order.interfaces.Cart;
 import com.bluedelivery.order.interfaces.Cart.CartItemOption.CartItemOptionBuilder;
 import com.bluedelivery.order.interfaces.Cart.CartItemOptionGroup.CartItemOptionGroupBuilder;
 
-public class OrderData {
+public class Fixtures {
     private static final Long SHOP_ID = 1L;
     private static final Long VALID_USER_ID = 1L;
     private static Long menuId = 1L;
@@ -102,7 +102,12 @@ public class OrderData {
                 .name(menuOption.getName())
                 .price(menuOption.getPrice());
     }
-    
+
+    public static Cart.CartBuilder cart() {
+        return Cart.builder()
+                .cartItems(List.of(cartItem().build()));
+    }
+
     public static Cart.CartItem.CartItemBuilder cartItem() {
         return Cart.CartItem.builder()
                 .menuId(menuId)

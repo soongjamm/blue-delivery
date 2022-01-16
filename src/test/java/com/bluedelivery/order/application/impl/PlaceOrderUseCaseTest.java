@@ -1,11 +1,12 @@
 package com.bluedelivery.order.application.impl;
 
-import static com.bluedelivery.OrderData.orderForm;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.*;
-
+import com.bluedelivery.order.application.OrderMapper;
+import com.bluedelivery.order.application.PlaceOrderService;
+import com.bluedelivery.order.application.port.in.PlaceOrderUseCase;
+import com.bluedelivery.order.application.port.out.SaveOrderPort;
+import com.bluedelivery.order.domain.Order;
+import com.bluedelivery.payment.Payment;
+import com.bluedelivery.payment.PaymentService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,19 +14,19 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.ApplicationEventPublisher;
 
-import com.bluedelivery.order.application.OrderService;
-import com.bluedelivery.order.domain.Order;
-import com.bluedelivery.order.domain.OrderRepository;
-import com.bluedelivery.payment.Payment;
-import com.bluedelivery.payment.PaymentService;
+import static com.bluedelivery.Fixtures.orderForm;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class OrderServiceTest {
+class PlaceOrderUseCaseTest {
     
-    private OrderService orderService;
+    private PlaceOrderUseCase placeOrderUsecase;
     
     @Mock
-    private OrderRepository orderRepository;
+    private SaveOrderPort saveOrderPort;
     
     @Mock
     private OrderMapper orderMapper;
@@ -43,9 +44,9 @@ class OrderServiceTest {
     
     @BeforeEach
     void setup() {
-        orderService = new OrderHttpService(orderRepository, orderMapper, paymentService, publisher);
+        placeOrderUsecase = new PlaceOrderService(saveOrderPort, orderMapper, paymentService, publisher);
         form = orderForm().build();
-        order = form.createOrder();
+        order = Order.place(form);
         paymentForm = new Payment.PaymentForm(order);
         payment = paymentForm.createPayment();
         given(orderMapper.map(form)).willReturn(order);
@@ -58,10 +59,10 @@ class OrderServiceTest {
         payment.deny();
         
         //when
-        assertThrows(IllegalStateException.class, () -> orderService.takeOrder(form));
+        assertThrows(IllegalStateException.class, () -> placeOrderUsecase.placeOrder(form));
         
         //then
-        verify(orderRepository, never()).save(order);
+        verify(saveOrderPort, never()).save(order);
     }
     
     @Test
@@ -69,10 +70,10 @@ class OrderServiceTest {
         //given
         
         //when
-        Order result = orderService.takeOrder(form);
+        Order result = placeOrderUsecase.placeOrder(form);
         
         //then
         assertThat(result).isEqualTo(order);
-        verify(orderRepository, times(1)).save(order);
+        verify(saveOrderPort, times(1)).save(order);
     }
 }

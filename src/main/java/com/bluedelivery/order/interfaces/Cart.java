@@ -14,12 +14,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Cart {
     private Long shopId;
     private List<CartItem> cartItems;
-    
+
     public Order.OrderForm toOrderForm(Long userId) {
         return Order.OrderForm.builder()
                 .userId(userId)
@@ -30,7 +31,7 @@ public class Cart {
                                 .collect(toList()))
                 .build();
     }
-    
+
     @Builder
     @Getter
     @NoArgsConstructor
@@ -42,7 +43,7 @@ public class Cart {
         private int quantity;
         private List<CartItemOptionGroup> cartItemOptionGroups;
     }
-    
+
     @Builder
     @Getter
     @NoArgsConstructor
@@ -52,7 +53,7 @@ public class Cart {
         private String name;
         private List<CartItemOption> orderItemOptions;
     }
-    
+
     @Builder
     @Getter
     @NoArgsConstructor
