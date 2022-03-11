@@ -15,6 +15,29 @@
 - Docker
 
 
+### Test & Lint 자동화
+- 원격 저장소에 push 하기 위해서는 Test & Lint 를 통과해야 합니다.
+- Test & Lint 는 원격 저장소에 push 하면 자동으로 실행됩니다.
+- `githooks` 는 build 를 진행하면 자동으로 적용됩니다.  
+<br>
+
+
+**githooks 적용 여부 확인**
+```shell
+# 다음 명령어가 '.githooks' 를 출력한다면 성공
+git config --get core.hooksPath
+
+# 적용되지 않았다면 프로젝트의 루트 경로에서 다음을 명령어를 실행
+git config core.hooksPath
+```
+<br>
+
+**Lint 정보**  
+checkstyle <a href="https://naver.github.io/hackday-conventions-java">네이버 캠퍼스 핵데이 Java 코딩 컨벤션</a>
+- [indentation-tab] indent 를 tab -> space로 변경
+- [no-trailing-spaces] 적용 안함
+  
+
 ### Hexagonal Architecture 참고
 ```
 ├── order
@@ -67,29 +90,6 @@ Github Flow는 main 브랜치를 가 곧 product가 되는 전략입니다.
 리뷰가 끝난 커밋은 main 브랜치로 병합됩니다.
 
 
-
-### (로컬) 빌드 자동화
-
-`git hook` 을 이용해 로컬환경에서 빌드 자동화를 구성했습니다.
-
-**적용방법** 
-
-커맨드라인에서 `git config core.hookspath .githooks` 설정
-
-- git --version 으로 버전 확인 후 2.9 아래면 업데이트 필요
-- 이후 commit 이나 push 명령시 자동으로 트리거가 실행됌
-
-`commit` 
-
-- 테스트 수행 
-- Linting (checkstyle 플러그인 + <a href="https://naver.github.io/hackday-conventions-java">네이버 캠퍼스 핵데이 Java 코딩 컨벤션</a>)
-    - [indentation-tab] indent 를 tab -> space로 변경
-    - [no-trailing-spaces] 적용 안함 
-
-`push` 
-
-- 원격 저장소의 브랜치가 main 인지 확인 (main이면 push 불가능)
-- main 브랜치를 pull해서 최신 상태 유지
 
 ## DB 형상관리
 [flyway](https://flywaydb.org/documentation/usage/gradle/) 사용하여 런타임에 마이그레이션함.
