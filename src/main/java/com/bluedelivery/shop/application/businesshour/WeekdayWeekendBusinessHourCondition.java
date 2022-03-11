@@ -1,15 +1,16 @@
 package com.bluedelivery.shop.application.businesshour;
 
+import static com.bluedelivery.shop.interfaces.dto.BusinessHourDay.*;
+
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.bluedelivery.shop.interfaces.dto.BusinessHourDay;
 import com.bluedelivery.shop.application.dto.BusinessHourParam;
 import com.bluedelivery.shop.domain.BusinessHour;
+import com.bluedelivery.shop.interfaces.dto.BusinessHourDay;
 
-import static com.bluedelivery.shop.interfaces.dto.BusinessHourDay.*;
 
 public class WeekdayWeekendBusinessHourCondition implements BusinessHourCondition {
     

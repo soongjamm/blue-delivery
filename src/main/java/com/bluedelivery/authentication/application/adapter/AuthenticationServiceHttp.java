@@ -3,11 +3,11 @@ package com.bluedelivery.authentication.application.adapter;
 import java.util.Optional;
 import java.util.UUID;
 
-import com.bluedelivery.authentication.application.LoginTarget;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bluedelivery.authentication.application.AuthenticationService;
+import com.bluedelivery.authentication.application.LoginTarget;
 import com.bluedelivery.authentication.domain.Authentication;
 import com.bluedelivery.authentication.domain.AuthenticationRepository;
 import com.bluedelivery.authentication.domain.TokenType;

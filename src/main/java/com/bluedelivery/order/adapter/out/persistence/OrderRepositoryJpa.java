@@ -2,10 +2,11 @@ package com.bluedelivery.order.adapter.out.persistence;
 
 import java.util.Optional;
 
-import com.bluedelivery.order.domain.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import com.bluedelivery.order.domain.Order;
 
 @Repository
 public interface OrderRepositoryJpa extends JpaRepository<Order, Long> {

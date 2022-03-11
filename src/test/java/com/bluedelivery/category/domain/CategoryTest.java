@@ -2,7 +2,6 @@ package com.bluedelivery.category.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.bluedelivery.category.domain.Category;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

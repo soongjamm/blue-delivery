@@ -4,7 +4,6 @@ import static com.bluedelivery.menu.domain.Menu.MenuStatus.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.bluedelivery.menu.interfaces.adapter.MenuControllerImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -13,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.bluedelivery.authentication.application.AuthenticationService;
+import com.bluedelivery.menu.interfaces.adapter.MenuControllerImpl;
 import com.bluedelivery.shop.application.adapter.MenuServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

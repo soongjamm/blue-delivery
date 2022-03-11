@@ -1,8 +1,10 @@
 package com.bluedelivery.order.application;
 
-import com.bluedelivery.order.domain.Order;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import com.bluedelivery.order.domain.Order;
+
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Component

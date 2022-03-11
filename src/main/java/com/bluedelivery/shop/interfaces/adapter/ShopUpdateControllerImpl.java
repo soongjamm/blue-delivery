@@ -8,6 +8,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bluedelivery.category.application.CategoryNotFoundException;
+import com.bluedelivery.common.response.ApiException;
+import com.bluedelivery.common.response.ErrorCode;
+import com.bluedelivery.common.response.HttpResponse;
+import com.bluedelivery.shop.application.ShopUpdateService;
+import com.bluedelivery.shop.application.dto.UpdateDeliveryAreaTarget;
+import com.bluedelivery.shop.domain.BusinessHour;
+import com.bluedelivery.shop.domain.DeliveryArea;
 import com.bluedelivery.shop.interfaces.EditPhoneRequest;
 import com.bluedelivery.shop.interfaces.ShopUpdateController;
 import com.bluedelivery.shop.interfaces.SuspensionRequest;
@@ -16,14 +24,6 @@ import com.bluedelivery.shop.interfaces.UpdateClosingDaysRequest;
 import com.bluedelivery.shop.interfaces.dto.BusinessHoursRequest;
 import com.bluedelivery.shop.interfaces.dto.DeliveryAreaResponse;
 import com.bluedelivery.shop.interfaces.dto.UpdateDeliveryAreaRequest;
-import com.bluedelivery.category.application.CategoryNotFoundException;
-import com.bluedelivery.shop.application.ShopUpdateService;
-import com.bluedelivery.shop.application.dto.UpdateDeliveryAreaTarget;
-import com.bluedelivery.common.response.ApiException;
-import com.bluedelivery.common.response.ErrorCode;
-import com.bluedelivery.common.response.HttpResponse;
-import com.bluedelivery.shop.domain.BusinessHour;
-import com.bluedelivery.shop.domain.DeliveryArea;
 
 @RestController
 public class ShopUpdateControllerImpl implements ShopUpdateController {

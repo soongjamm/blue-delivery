@@ -20,9 +20,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 
 import com.bluedelivery.category.domain.Category;
+import com.bluedelivery.order.domain.Order;
 import com.bluedelivery.shop.domain.closingday.ClosingPolicies;
 import com.bluedelivery.shop.domain.closingday.ClosingPolicy;
-import com.bluedelivery.order.domain.Order;
 
 import lombok.Builder;
 

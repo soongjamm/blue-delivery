@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.bluedelivery.common.response.HttpResponse;
 import com.bluedelivery.authentication.domain.Authentication;
+import com.bluedelivery.common.response.HttpResponse;
 
 @RequestMapping("/auth")
 public interface AuthenticationController {

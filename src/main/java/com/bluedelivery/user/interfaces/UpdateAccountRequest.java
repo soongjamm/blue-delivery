@@ -6,8 +6,8 @@ import java.time.LocalDate;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
-import com.bluedelivery.user.application.UpdateAccountTarget;
 import com.bluedelivery.common.RegexConstants;
+import com.bluedelivery.user.application.UpdateAccountTarget;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

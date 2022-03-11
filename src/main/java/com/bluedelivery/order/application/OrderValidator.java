@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 
 import com.bluedelivery.menu.domain.Menu;
 import com.bluedelivery.menu.domain.MenuRepository;
+import com.bluedelivery.order.domain.Order;
 import com.bluedelivery.shop.domain.Shop;
 import com.bluedelivery.shop.domain.ShopRepository;
 import com.bluedelivery.user.domain.User;
 import com.bluedelivery.user.domain.UserRepository;
-import com.bluedelivery.order.domain.Order;
 
 import lombok.RequiredArgsConstructor;
 

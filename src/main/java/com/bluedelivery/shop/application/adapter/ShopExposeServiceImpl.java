@@ -6,10 +6,10 @@ import static java.util.stream.Collectors.toList;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.bluedelivery.shop.application.ShopExposeService;
 import org.springframework.stereotype.Service;
 
 import com.bluedelivery.shop.application.OrderRankingStrategy;
+import com.bluedelivery.shop.application.ShopExposeService;
 import com.bluedelivery.shop.domain.Shop;
 import com.bluedelivery.shop.domain.ShopRepository;
 

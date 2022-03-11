@@ -1,5 +1,17 @@
 package com.bluedelivery.order.application.impl;
 
+import static com.bluedelivery.Fixtures.orderForm;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
 import com.bluedelivery.order.application.OrderMapper;
 import com.bluedelivery.order.application.PlaceOrderService;
 import com.bluedelivery.order.application.port.in.PlaceOrderUseCase;
@@ -7,18 +19,6 @@ import com.bluedelivery.order.application.port.out.SaveOrderPort;
 import com.bluedelivery.order.domain.Order;
 import com.bluedelivery.payment.Payment;
 import com.bluedelivery.payment.PaymentService;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.context.ApplicationEventPublisher;
-
-import static com.bluedelivery.Fixtures.orderForm;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class PlaceOrderUseCaseTest {
