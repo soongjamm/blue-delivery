@@ -15,7 +15,7 @@
 - Docker
 
 
-### Test & Lint 자동화
+## Test & Lint 자동화
 - 원격 저장소에 push 하기 위해서는 Test & Lint 를 통과해야 합니다.
 - Test & Lint 는 원격 저장소에 push 하면 자동으로 실행됩니다.
 - `githooks` 는 build 를 진행하면 자동으로 적용됩니다.  
@@ -37,6 +37,8 @@ checkstyle <a href="https://naver.github.io/hackday-conventions-java">네이버 
 - [indentation-tab] indent 를 tab -> space로 변경
 - [no-trailing-spaces] 적용 안함
   
+
+<br>
 
 ### Hexagonal Architecture 참고
 ```
