@@ -9,9 +9,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.List;
 
-import com.bluedelivery.category.interfaces.CreateCategoryRequest;
-import com.bluedelivery.category.interfaces.EditCategoryRequest;
-import com.bluedelivery.category.interfaces.adapter.CategoryManagerControllerImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,8 +22,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.bluedelivery.category.application.CategoryManagerService;
-import com.bluedelivery.common.config.GlobalExceptionHandler;
 import com.bluedelivery.category.domain.Category;
+import com.bluedelivery.category.interfaces.adapter.CategoryManagerControllerImpl;
+import com.bluedelivery.common.config.GlobalExceptionHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ExtendWith(MockitoExtension.class)

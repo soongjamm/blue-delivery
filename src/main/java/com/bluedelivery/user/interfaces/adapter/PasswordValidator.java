@@ -2,10 +2,11 @@ package com.bluedelivery.user.interfaces.adapter;
 
 import java.util.Objects;
 
-import com.bluedelivery.user.interfaces.UserRegisterRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+
+import com.bluedelivery.user.interfaces.UserRegisterRequest;
 
 @Component
 public class PasswordValidator implements Validator {

@@ -2,8 +2,8 @@ package com.bluedelivery.shop.application.dto;
 
 import java.util.Map;
 
-import com.bluedelivery.shop.interfaces.dto.BusinessHourDay;
 import com.bluedelivery.shop.application.businesshour.BusinessHourType;
+import com.bluedelivery.shop.interfaces.dto.BusinessHourDay;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

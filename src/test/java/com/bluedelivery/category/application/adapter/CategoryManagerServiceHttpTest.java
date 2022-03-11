@@ -6,7 +6,6 @@ import static org.mockito.BDDMockito.given;
 import java.util.Collections;
 import java.util.List;
 
-import com.bluedelivery.category.application.adapter.CategoryManagerServiceHttp;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

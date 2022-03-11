@@ -2,8 +2,6 @@ package com.bluedelivery.shop.interfaces;
 
 import javax.validation.Valid;
 
-import com.bluedelivery.shop.interfaces.dto.BusinessHoursRequest;
-import com.bluedelivery.shop.interfaces.dto.UpdateDeliveryAreaRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bluedelivery.common.response.HttpResponse;
+import com.bluedelivery.shop.interfaces.dto.BusinessHoursRequest;
+import com.bluedelivery.shop.interfaces.dto.UpdateDeliveryAreaRequest;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

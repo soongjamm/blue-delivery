@@ -3,7 +3,6 @@ package com.bluedelivery.shop.interfaces.adapter;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.bluedelivery.shop.interfaces.SearchedShopData;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,10 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bluedelivery.category.interfaces.GetShopsByCategoryResponse;
-import com.bluedelivery.shop.interfaces.ShopExposeController;
-import com.bluedelivery.shop.application.ShopExposeService;
 import com.bluedelivery.common.response.HttpResponse;
+import com.bluedelivery.shop.application.ShopExposeService;
 import com.bluedelivery.shop.domain.Shop;
+import com.bluedelivery.shop.interfaces.SearchedShopData;
+import com.bluedelivery.shop.interfaces.ShopExposeController;
 
 @RestController
 public class ShopExposeHttpController implements ShopExposeController {

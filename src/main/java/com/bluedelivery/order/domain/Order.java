@@ -19,6 +19,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.data.domain.AbstractAggregateRoot;
+
 import com.bluedelivery.common.event.EventEnvelope;
 import com.bluedelivery.menu.domain.Menu;
 import com.bluedelivery.payment.Payment;
@@ -26,7 +28,6 @@ import com.bluedelivery.payment.Payment;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import org.springframework.data.domain.AbstractAggregateRoot;
 
 @EqualsAndHashCode(of = "orderId")
 @Entity
@@ -142,6 +143,7 @@ public class Order extends AbstractAggregateRoot<Order> {
                 .eventType(OrderCreatedEvent.class.getSimpleName())
                 .build();
     }
+
     @EqualsAndHashCode
     @Builder
     @Getter

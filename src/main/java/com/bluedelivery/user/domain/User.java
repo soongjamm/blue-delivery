@@ -10,9 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.bluedelivery.authentication.application.AuthenticationFailedException;
 import com.bluedelivery.address.domain.Address;
 import com.bluedelivery.address.domain.Addresses;
+import com.bluedelivery.authentication.application.AuthenticationFailedException;
 
 @Entity
 public class User {

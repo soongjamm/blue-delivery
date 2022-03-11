@@ -1,7 +1,7 @@
 package com.bluedelivery.shop.application;
 
-import com.bluedelivery.menu.interfaces.RegisterMenuDto;
 import com.bluedelivery.menu.domain.Menu;
+import com.bluedelivery.menu.interfaces.RegisterMenuDto;
 
 public interface MenuService {
 

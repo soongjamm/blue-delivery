@@ -1,7 +1,7 @@
 package com.bluedelivery.user.interfaces.adapter;
 
-import static com.bluedelivery.common.response.HttpResponse.*;
 import static com.bluedelivery.authentication.domain.Authentication.AUTH_STR;
+import static com.bluedelivery.common.response.HttpResponse.*;
 import static org.springframework.http.HttpStatus.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,16 +11,16 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bluedelivery.address.domain.Address;
+import com.bluedelivery.authentication.domain.Authentication;
+import com.bluedelivery.common.response.HttpResponse;
+import com.bluedelivery.user.application.UserManagementService;
+import com.bluedelivery.user.domain.User;
 import com.bluedelivery.user.interfaces.AddAddressRequest;
 import com.bluedelivery.user.interfaces.DeleteAccountRequest;
 import com.bluedelivery.user.interfaces.UpdateAccountRequest;
 import com.bluedelivery.user.interfaces.UserManagementController;
 import com.bluedelivery.user.interfaces.UserRegisterRequest;
-import com.bluedelivery.user.application.UserManagementService;
-import com.bluedelivery.common.response.HttpResponse;
-import com.bluedelivery.address.domain.Address;
-import com.bluedelivery.authentication.domain.Authentication;
-import com.bluedelivery.user.domain.User;
 
 import lombok.RequiredArgsConstructor;
 

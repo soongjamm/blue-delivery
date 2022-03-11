@@ -10,11 +10,11 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import com.bluedelivery.order.adapter.out.persistence.OrderRepositoryJpa;
+import com.bluedelivery.order.domain.Order;
 import com.bluedelivery.shop.application.OrderRankingStrategy;
 import com.bluedelivery.shop.domain.Shop;
 import com.bluedelivery.shop.domain.ShopRepository;
-import com.bluedelivery.order.domain.Order;
-import com.bluedelivery.order.adapter.out.persistence.OrderRepositoryJpa;
 
 import lombok.extern.slf4j.Slf4j;
 

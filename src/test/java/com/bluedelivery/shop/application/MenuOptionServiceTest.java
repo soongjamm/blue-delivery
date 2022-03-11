@@ -14,12 +14,12 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.context.ActiveProfiles;
 
-import com.bluedelivery.menu.interfaces.MenuOptionDto;
-import com.bluedelivery.menu.interfaces.MenuOptionGroupDto;
 import com.bluedelivery.menu.domain.MenuOption;
 import com.bluedelivery.menu.domain.MenuOptionGroup;
 import com.bluedelivery.menu.domain.MenuOptionGroupRepository;
 import com.bluedelivery.menu.domain.MenuOptionRepository;
+import com.bluedelivery.menu.interfaces.MenuOptionDto;
+import com.bluedelivery.menu.interfaces.MenuOptionGroupDto;
 
 
 @ExtendWith(MockitoExtension.class)

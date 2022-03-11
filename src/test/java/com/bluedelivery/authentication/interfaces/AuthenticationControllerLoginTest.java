@@ -7,7 +7,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.bluedelivery.authentication.interfaces.adapter.AuthenticationControllerImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
@@ -22,6 +21,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.bluedelivery.authentication.application.AuthenticationService;
 import com.bluedelivery.authentication.domain.Authentication;
+import com.bluedelivery.authentication.interfaces.adapter.AuthenticationControllerImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ExtendWith({MockitoExtension.class})

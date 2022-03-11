@@ -1,8 +1,8 @@
 package com.bluedelivery.shop.application;
 
+import com.bluedelivery.menu.domain.MenuGroup;
 import com.bluedelivery.menu.interfaces.RegisterMenuGroupDto;
 import com.bluedelivery.menu.interfaces.UpdateMenuGroupDto;
-import com.bluedelivery.menu.domain.MenuGroup;
 
 public interface MenuGroupService {
 

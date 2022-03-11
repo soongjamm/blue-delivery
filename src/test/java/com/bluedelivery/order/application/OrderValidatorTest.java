@@ -21,12 +21,12 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.bluedelivery.menu.domain.MenuRepository;
+import com.bluedelivery.order.domain.Order;
 import com.bluedelivery.shop.domain.BusinessHour;
 import com.bluedelivery.shop.domain.Shop;
 import com.bluedelivery.shop.domain.ShopRepository;
 import com.bluedelivery.user.domain.User;
 import com.bluedelivery.user.domain.UserRepository;
-import com.bluedelivery.order.domain.Order;
 
 @ExtendWith(MockitoExtension.class)
 public class OrderValidatorTest {

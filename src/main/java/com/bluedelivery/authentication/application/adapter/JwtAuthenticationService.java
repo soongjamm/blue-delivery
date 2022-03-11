@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import com.bluedelivery.authentication.application.LoginTarget;
 import org.springframework.stereotype.Service;
 
 import com.bluedelivery.authentication.application.AuthenticationService;
+import com.bluedelivery.authentication.application.LoginTarget;
 import com.bluedelivery.authentication.domain.Authentication;
 import com.bluedelivery.authentication.domain.TokenType;
 import com.bluedelivery.user.domain.User;

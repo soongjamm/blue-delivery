@@ -22,8 +22,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bluedelivery.authentication.application.AuthenticationService;
-import com.bluedelivery.common.config.GlobalExceptionHandler;
 import com.bluedelivery.authentication.domain.Authentication;
+import com.bluedelivery.common.config.GlobalExceptionHandler;
 
 @ExtendWith(MockitoExtension.class)
 class UserAuthInterceptorTest {

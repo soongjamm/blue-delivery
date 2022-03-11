@@ -6,11 +6,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+
 import java.time.LocalDate;
 import java.time.Month;
 
-import com.bluedelivery.user.interfaces.UserManagementController;
-import com.bluedelivery.user.interfaces.UserRegisterRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,10 +22,10 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import com.bluedelivery.common.config.GlobalExceptionHandler;
+import com.bluedelivery.user.application.UserManagementService;
 import com.bluedelivery.user.interfaces.adapter.PasswordValidator;
 import com.bluedelivery.user.interfaces.adapter.UserManagementControllerImpl;
-import com.bluedelivery.user.application.UserManagementService;
-import com.bluedelivery.common.config.GlobalExceptionHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
