@@ -7,8 +7,7 @@ CREATE TABLE CLOSING_DAY
     DAY_OF_WEEK  VARCHAR(10),          -- RegularClosingDay 전용
     FROM_DATE    DATE,                 -- TemporaryClosingDay 전용
     TO_DATE      DATE,                 -- TemporaryClosingDay 전용
-    PRIMARY KEY (ID),
-    FOREIGN KEY (SHOP_ID) REFERENCES SHOP (ID)
+    PRIMARY KEY (ID)
 );
 
 -- 영업시간인 가게들을 찾고 휴무일에도 포함되는 가게를 찾아서 차집합인 가게만 영업중인 가게 후보
