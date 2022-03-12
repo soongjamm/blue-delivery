@@ -14,10 +14,6 @@
 - Gradle
 - Docker
 
-
-## Test & Lint 자동화
-- 원격 저장소에 push 하기 위해서는 Test & Lint 를 통과해야 합니다.
-- Test & Lint 는 원격 저장소에 push 하면 자동으로 실행됩니다.
 <br>
 
 ## 프로젝트 초기 설정
@@ -43,6 +39,11 @@ git config --get core.hooksPath
 # 적용되지 않았다면 프로젝트의 루트 경로에서 다음을 명령어를 실행
 git config core.hooksPath
 ```
+<br>
+
+## Test & Lint 자동화
+- 원격 저장소에 push 하기 위해서는 Test & Lint 를 통과해야 합니다.
+- Test & Lint 는 원격 저장소에 push 하면 자동으로 실행됩니다.
 <br>
 
 **Lint 정보**  
