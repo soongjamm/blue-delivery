@@ -1,0 +1,3 @@
+brew "docker-compose"
+brew "flyway"
+brew "git"

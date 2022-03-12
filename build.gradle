@@ -21,11 +21,6 @@ repositories {
     mavenCentral()
 }
 
-task configGithooks(type: Exec) {
-    workingDir '.'
-    commandLine 'git', 'config', 'core.hookspath', '.githooks'
-}
-
 jib {
     from {
         image = "adoptopenjdk/openjdk11:alpine"

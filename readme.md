@@ -18,8 +18,21 @@
 ## Test & Lint 자동화
 - 원격 저장소에 push 하기 위해서는 Test & Lint 를 통과해야 합니다.
 - Test & Lint 는 원격 저장소에 push 하면 자동으로 실행됩니다.
-- `githooks` 는 build 를 진행하면 자동으로 적용됩니다.  
 <br>
+
+## 프로젝트 초기 설정
+```shell 
+cd bluedelivery-development-env
+
+# Install packages & docker images, setup githooks
+make init-env
+
+# Migrate DB Schemas
+make init-db
+
+# Start Docker Containers
+make docker-up
+```
 
 
 **githooks 적용 여부 확인**

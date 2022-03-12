@@ -36,9 +36,10 @@ out/
 ### VS Code ###
 .vscode/
 
-### Docker ###
-compose/*/data/
-compose/zookeeper/
+### development-env ###
+bluedelivery-development-env/Brewfile.lock.json
+bluedelivery-development-env/docker/*/data/
+bluedelivery-development-env/docker/zookeeper/
 
 ### apm agent jar ###
 src/main/jib/*.jar

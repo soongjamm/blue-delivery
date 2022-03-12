@@ -84,27 +84,6 @@ create table city_to_dong
     primary key (address_jurisdiction_eup_myon_dong_code)
 ) engine=InnoDB;
 
-
-alter table address
-    add constraint FK_Building_Info
-        foreign key (building_management_number)
-            references building_info (building_management_number);
-
-alter table building_info
-    add constraint FK_City
-        foreign key (address_jurisdiction_eup_myon_dong_code)
-            references city_to_dong (address_jurisdiction_eup_myon_dong_code);
-
-alter table address
-    add constraint FK_User
-        foreign key (user_id)
-            references user (USER_ID);
-
-alter table USER
-    add constraint FK_MAIN_ADDRESS
-        foreign key (MAIN_ADDRESS_ID)
-            references ADDRESS (ADDRESS_ID);
-
 alter table address
     add constraint UC_Address
         unique (USER_ID, BUILDING_MANAGEMENT_NUMBER, DETAIL);
