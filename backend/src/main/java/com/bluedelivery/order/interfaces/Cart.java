@@ -2,7 +2,6 @@ package com.bluedelivery.order.interfaces;
 
 import static java.util.stream.Collectors.toList;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.bluedelivery.order.domain.Order;
