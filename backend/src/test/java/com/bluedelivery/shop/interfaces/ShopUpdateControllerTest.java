@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import com.bluedelivery.shop.domain.holiday.WeekCycle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -56,7 +57,6 @@ import com.bluedelivery.shop.domain.BusinessHour;
 import com.bluedelivery.shop.domain.DeliveryArea;
 import com.bluedelivery.shop.domain.Shop;
 import com.bluedelivery.shop.domain.ShopRepository;
-import com.bluedelivery.shop.domain.closingday.CyclicRegularClosing;
 import com.bluedelivery.shop.interfaces.adapter.ShopUpdateControllerImpl;
 import com.bluedelivery.shop.interfaces.dto.BusinessHourDay;
 import com.bluedelivery.shop.interfaces.dto.BusinessHoursRequest;
@@ -164,7 +164,7 @@ class ShopUpdateControllerTest {
         UpdateClosingDaysRequest request = new UpdateClosingDaysRequest(
                 true,
                 List.of(new RegularClosingParam(DayOfWeek.SUNDAY),
-                        new RegularClosingParam(CyclicRegularClosing.Cycle.LAST, MONDAY)),
+                        new RegularClosingParam(WeekCycle.LAST, MONDAY)),
                 List.of(new TemporaryClosingParam(june18, june23))
         );
         

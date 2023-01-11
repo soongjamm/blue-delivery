@@ -26,9 +26,10 @@ public class ShopExposeServiceImpl implements ShopExposeService {
     // TODO '요청 클라이언트의 위치'에 맞는 카테고리-가게 리스트를 받아오는 캐시서비스를 따로 만들고
     // TODO ShopExposeService에서는 여러가지 조건(영업, 정렬방법 등)을 만족하는 데이터를 내려주도록
     public List<Shop> getShopsByCategory(Long categoryId) {
+        LocalDateTime now = LocalDateTime.now();
         return shopRepository.findShopsByCategoryId(categoryId).stream()
-                .filter(shop -> !shop.isClosed(LocalDateTime.now())) // 휴무가 아닌 가게만 선택NotificationService
-                .sorted((o1, o2) -> compare(o2.isOpen(), o1.isOpen())) // 영업중 가게(true) 순 정렬
+                .filter(shop -> shop.isOpen(now)) // 휴무가 아닌 가게만 선택NotificationService
+                .sorted((o1, o2) -> compare(o2.isOpen(now), o1.isOpen(now))) // 영업중 가게(true) 순 정렬
                 .collect(toList());
     }
 

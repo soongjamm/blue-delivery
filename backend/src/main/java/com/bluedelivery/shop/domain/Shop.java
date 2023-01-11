@@ -1,31 +1,22 @@
 package com.bluedelivery.shop.domain;
 
-import static com.bluedelivery.order.domain.ExceptionMessage.ORDERED_AMOUNT_LOWER_THAN_MINIMUM_ORDER_AMOUNT;
-import static com.bluedelivery.order.domain.ExceptionMessage.SHOP_IS_NOT_OPEN;
+import com.bluedelivery.category.domain.Category;
+import com.bluedelivery.order.domain.Order;
+import com.bluedelivery.shop.domain.holiday.HolidayPolicy;
+import com.bluedelivery.shop.infra.holiday.HolidayPolicyListJsonConverter;
+import lombok.Builder;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.*;
 
-import com.bluedelivery.category.domain.Category;
-import com.bluedelivery.order.domain.Order;
-import com.bluedelivery.shop.domain.closingday.ClosingPolicies;
-import com.bluedelivery.shop.domain.closingday.ClosingPolicy;
+import static com.bluedelivery.order.domain.ExceptionMessage.ORDERED_AMOUNT_LOWER_THAN_MINIMUM_ORDER_AMOUNT;
+import static com.bluedelivery.order.domain.ExceptionMessage.SHOP_IS_NOT_OPEN;
 
-import lombok.Builder;
-
+@Table(name = "shop")
 @Entity
 public class Shop {
     @Id
@@ -50,12 +41,12 @@ public class Shop {
     @CollectionTable(name = "SHOP_CATEGORY", joinColumns = @JoinColumn(name = "SHOP_ID"))
     private List<Long> categoryIds = new ArrayList<>();
 
-    @Embedded
-    private ClosingPolicies closingPolicies = new ClosingPolicies();
-
+    @Column(name = "holiday_policies", columnDefinition = "json")
+    @Convert(converter = HolidayPolicyListJsonConverter.class)
+    private List<HolidayPolicy> holidayPolicies = new ArrayList<>();
 
     @Column(name = "suspension_until")
-    private LocalDateTime suspensionUntil;
+    private LocalDateTime suspensionUntil = LocalDateTime.now();
     private boolean exposed;
 
     public Shop() {
@@ -63,7 +54,7 @@ public class Shop {
 
     @Builder
     public Shop(Long id, String name, String introduce, String phone, String deliveryAreaGuide, int minimumOrderAmount,
-                List<BusinessHour> businessHours, List<Long> categoryIds, ClosingPolicies closingPolicies,
+                List<BusinessHour> businessHours, List<Long> categoryIds, List<HolidayPolicy> holidayPolicies,
                 boolean exposed) {
         this.id = id;
         this.name = name;
@@ -73,7 +64,7 @@ public class Shop {
         this.minimumOrderAmount = minimumOrderAmount;
         this.businessHours = businessHours;
         this.categoryIds = categoryIds;
-        this.closingPolicies = closingPolicies;
+        this.holidayPolicies = holidayPolicies;
         this.exposed = exposed;
     }
 
@@ -124,28 +115,15 @@ public class Shop {
         return name;
     }
 
-    public String getDeliveryAreaGuide() {
-        return deliveryAreaGuide;
+    public void addClosingDayPolicy(HolidayPolicy policy) {
+        this.holidayPolicies.add(policy);
     }
 
-    public String getIntroduce() {
-        return introduce;
-    }
-
-    public void addClosingDayPolicy(ClosingPolicy policy) {
-        this.closingPolicies.add(policy);
-    }
-
-    public boolean isClosed(LocalDateTime datetime) {
-        return closingPolicies.isClosed(datetime);
-    }
-
-    public boolean isOpen() {
-        return exposed && !isClosed(LocalDateTime.now()) && isBusinessHour(LocalDateTime.now());
-    }
-
-    private boolean isBusinessHour(LocalDateTime now) {
-        return this.businessHours.stream().anyMatch( x-> x.isOpen(now));
+    public boolean isOpen(LocalDateTime now) {
+        return exposed
+                && suspensionUntil.isBefore(now)
+                && holidayPolicies.stream().noneMatch(it -> it.isHoliday(now.toLocalDate()))
+                && businessHours.stream().anyMatch(x -> x.isOpen(now));
     }
 
     public void updateExposeStatus(Boolean expose) {
@@ -165,12 +143,8 @@ public class Shop {
         return this.deliveryAreas.addAll(deliveryAreas);
     }
 
-    public List<DeliveryArea> getDeliveryAreas() {
-        return Collections.unmodifiableList(deliveryAreas);
-    }
-
     public void isOrderPossible(Order order) {
-        if (!isOpen()) {
+        if (!isOpen(LocalDateTime.now())) {
             throw new IllegalStateException(SHOP_IS_NOT_OPEN);
         }
         if (order.totalOrderAmount() < this.minimumOrderAmount) {

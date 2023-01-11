@@ -71,7 +71,7 @@ public class TotalOrdersPerHour implements OrderRankingStrategy {
     private List<Shop> openingShops() {
         List<Shop> openingShops = shopRepository.findAll()
                 .stream()
-                .filter(s -> s.isOpen())
+                .filter(s -> s.isOpen(LocalDateTime.now()))
                 .collect(Collectors.toList());
         return openingShops;
     }

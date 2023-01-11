@@ -5,8 +5,8 @@ import static com.bluedelivery.order.domain.ExceptionMessage.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.mockStatic;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -29,7 +29,7 @@ import com.bluedelivery.user.domain.User;
 import com.bluedelivery.user.domain.UserRepository;
 
 @ExtendWith(MockitoExtension.class)
-public class OrderValidatorTest {
+class OrderValidatorTest {
     
     @Mock(lenient = true)
     private Shop shop;
@@ -51,7 +51,7 @@ public class OrderValidatorTest {
         given(userRepository.findById(1L)).willReturn(Optional.of(new User()));
         given(shopRepository.findById(1L)).willReturn(Optional.of(shop));
         given(menuRepository.findAllById(List.of(1L))).willReturn(List.of(menu().build()));
-        given(shop.isOpen()).willReturn(true);
+        given(shop.isOpen(any())).willReturn(true);
         given(shop.getMinimumOrderAmount()).willReturn(0);
     }
     
