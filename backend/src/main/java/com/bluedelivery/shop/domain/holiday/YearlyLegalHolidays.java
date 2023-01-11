@@ -1,8 +1,7 @@
-package com.bluedelivery.shop.domain.closingday;
+package com.bluedelivery.shop.domain.holiday;
 
 import java.time.LocalDate;
 import java.time.Year;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -20,10 +19,6 @@ public class YearlyLegalHolidays {
         updateHolidaysIfNotExist(year);
         Set<LocalDate> holidaysOfAYear = yearly.get(year);
         return holidaysOfAYear.contains(date);
-    }
-    
-    public Map<Year, Set<LocalDate>> getYearly() {
-        return Collections.unmodifiableMap(yearly);
     }
     
     private synchronized void updateHolidaysIfNotExist(Year year) {
