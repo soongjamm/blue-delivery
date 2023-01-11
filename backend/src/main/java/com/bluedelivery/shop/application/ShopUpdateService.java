@@ -82,9 +82,9 @@ public class ShopUpdateService {
         shop.updateExposeStatus(status);
     }
     
-    public void suspend(Long shopId, Suspension suspension) {
+    public void suspend(Long shopId, SuspensionPeriod suspensionPeriod) {
         Shop shop = getShop(shopId);
-        shop.addClosingDayPolicy(suspension);
+        shop.suspendUntil(suspensionPeriod.from(LocalDateTime.now()));
     }
     
     @Transactional

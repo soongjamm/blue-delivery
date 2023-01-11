@@ -53,6 +53,9 @@ public class Shop {
     @Embedded
     private ClosingPolicies closingPolicies = new ClosingPolicies();
 
+
+    @Column(name = "suspension_until")
+    private LocalDateTime suspensionUntil;
     private boolean exposed;
 
     public Shop() {
@@ -173,5 +176,9 @@ public class Shop {
         if (order.totalOrderAmount() < this.minimumOrderAmount) {
             throw new IllegalArgumentException(ORDERED_AMOUNT_LOWER_THAN_MINIMUM_ORDER_AMOUNT);
         }
+    }
+
+    public void suspendUntil(LocalDateTime from) {
+        this.suspensionUntil = from;
     }
 }
