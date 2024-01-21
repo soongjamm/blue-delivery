@@ -9,6 +9,16 @@
         </encoder>
     </appender>
 
+    <appender name="SENTRY" class="io.sentry.logback.SentryAppender">
+        <options>
+            <dsn>https://17bb52b2afb5c8f8ce7f07f5ed92a484@o4506609682874368.ingest.sentry.io/4506609690869760</dsn>
+            <contextTag>traceId</contextTag>
+            <contextTag>spanId</contextTag>
+        </options>
+        <minimumEventLevel>WARN</minimumEventLevel>
+        <minimumBreadcrumbLevel>INFO</minimumBreadcrumbLevel>
+    </appender>
+
     <include resource="org/springframework/boot/logging/logback/defaults.xml" />
     <include resource="logback/logback-${spring.profiles.active}.xml"/>
 </configuration>
