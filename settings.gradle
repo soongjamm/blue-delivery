@@ -1,3 +1,4 @@
 rootProject.name = 'delivery'
-include 'backend'
 
+include 'backend'
+include 'instrument:logging'
