@@ -24,7 +24,7 @@ import com.bluedelivery.common.event.Message;
 @Configuration
 public class KafkaConfig {
     
-    @Value("${kafka.bootstrap.server}")
+    @Value("${spring.kafka.bootstrap-servers}")
     private String server;
     
     @Bean
