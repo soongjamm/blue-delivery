@@ -27,7 +27,6 @@ dependencies {
     implementation 'redis.clients:jedis:3.6.0'
     implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
     implementation 'mysql:mysql-connector-java'
-    implementation 'com.h2database:h2:1.4.200'
     implementation 'com.github.ben-manes.caffeine:caffeine:3.0.2'
     implementation 'net.time4j:time4j-base:5.7' // time4j 음력->양력 변환을 위해 사용
 
@@ -39,6 +38,7 @@ dependencies {
     implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2', 'io.jsonwebtoken:jjwt-jackson:0.11.2'
 
+    testImplementation 'com.h2database:h2:1.4.200'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
