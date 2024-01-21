@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 
 import com.bluedelivery.common.event.OutboxRepository;
 import com.bluedelivery.order.application.OrderMapper;
@@ -22,8 +21,10 @@ import com.bluedelivery.order.domain.Order;
 import com.bluedelivery.payment.Payment;
 import com.bluedelivery.payment.PaymentService;
 
-@SpringBootTest
-@ActiveProfiles("test")
+@SpringBootTest(
+        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+        properties = {"spring.profiles.active=test"}
+)
 class EventHandlerTest {
     
     private PlaceOrderUseCase placeOrderUsecase;

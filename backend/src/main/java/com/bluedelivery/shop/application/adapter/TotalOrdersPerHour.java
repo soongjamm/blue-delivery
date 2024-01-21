@@ -46,7 +46,7 @@ public class TotalOrdersPerHour implements OrderRankingStrategy {
 
 
     @Scheduled(cron = "0 59 0/1 * * *")
-    private void addShopRankingForRedis() {
+    public void addShopRankingForRedis() {
         String newKeyByHours = key.replaceAll(key, key + LocalDateTime.now().getHour());
 
         List<Shop> shops = openingShops();

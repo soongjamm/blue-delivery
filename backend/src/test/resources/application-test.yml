@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect
+
+DB:
+  URL: localhost:13306
+  USERNAME: root
+  PASSWORD: ""
+REDIS:
+  HOST: localhost
+  PORT: 16379
+KAFKA:
+  BOOTSTRAP_SERVERS: localhost:29092

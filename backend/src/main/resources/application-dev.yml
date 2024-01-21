@@ -1,11 +1,4 @@
 spring:
-  datasource:
-    # 쿼리 로그가 2중으로 찍히는데, log4jdbc는 정리가 안되어 나와서 주석처리함. mybatis 쿼리로그를 보려면 이 url을 사용
-    # url: jdbc:log4jdbc:mysql://localhost:3306/delivery
-    url: jdbc:mysql://localhost:3306/delivery
-    username: root
-    password:
-
   flyway:
     enabled: false
     url: jdbc:mysql://localhost:3306/delivery
@@ -17,16 +10,9 @@ spring:
 
   jpa:
     show-sql: false
-    hibernate:
-      ddl-auto: create
     database-platform: org.hibernate.dialect.MySQL8Dialect
 
   redis:
     host: localhost
     password:
     port: 6379
-
-
-kafka:
-  bootstrap:
-    server: localhost:29092
