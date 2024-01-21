@@ -76,8 +76,8 @@ public class ShopUpdateControllerImpl implements ShopUpdateController {
         updateService.expose(shopId, expose);
     }
     
-    public void suspendShop(Long shopId, SuspensionRequest suspension) {
-        updateService.suspend(shopId, suspension.toEntity());
+    public void suspendShop(Long shopId, SuspensionRequest request) {
+        updateService.suspend(shopId, request.getPeriod());
     }
     
     @Override

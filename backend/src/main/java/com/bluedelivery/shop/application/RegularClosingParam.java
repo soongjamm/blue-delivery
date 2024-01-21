@@ -2,38 +2,35 @@ package com.bluedelivery.shop.application;
 
 import java.time.DayOfWeek;
 
-import com.bluedelivery.shop.domain.closingday.ClosingPolicy;
-import com.bluedelivery.shop.domain.closingday.CyclicRegularClosing;
-import com.bluedelivery.shop.domain.closingday.WeeklyRegularClosing;
+import com.bluedelivery.shop.domain.holiday.CyclicRegularHolidayPolicy;
+import com.bluedelivery.shop.domain.holiday.HolidayPolicy;
+import com.bluedelivery.shop.domain.holiday.WeekCycle;
 
+import com.bluedelivery.shop.domain.holiday.WeeklyRegularHolidayPolicy;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 public class RegularClosingParam {
     
-    private CyclicRegularClosing.Cycle cycle;
+    private WeekCycle cycle;
     private DayOfWeek dayOfWeek;
     
     public RegularClosingParam(DayOfWeek dayOfWeek) {
         this.dayOfWeek = dayOfWeek;
     }
     
-    public RegularClosingParam(CyclicRegularClosing.Cycle cycle, DayOfWeek dayOfWeek) {
+    public RegularClosingParam(WeekCycle cycle, DayOfWeek dayOfWeek) {
         this.cycle = cycle;
         this.dayOfWeek = dayOfWeek;
     }
     
-    public ClosingPolicy toEntity() {
+    public HolidayPolicy toEntity() {
         if (this.cycle == null) {
-            return new WeeklyRegularClosing(this.dayOfWeek);
+            return new WeeklyRegularHolidayPolicy(this.dayOfWeek);
         }
-        return new CyclicRegularClosing(this.cycle, dayOfWeek);
+        return new CyclicRegularHolidayPolicy(this.cycle, dayOfWeek);
     }
-    
-    public CyclicRegularClosing.Cycle getCycle() {
-        return cycle;
-    }
-    
+
     public DayOfWeek getDayOfWeek() {
         return dayOfWeek;
     }

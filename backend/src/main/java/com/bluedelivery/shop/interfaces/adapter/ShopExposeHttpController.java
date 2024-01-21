@@ -1,5 +1,6 @@
 package com.bluedelivery.shop.interfaces.adapter;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,7 +36,7 @@ public class ShopExposeHttpController implements ShopExposeController {
                         .map(shop -> new SearchedShopData(
                                 shop.getId(),
                                 shop.getName(),
-                                shop.isOpen()))
+                                shop.isOpen(LocalDateTime.now())))
                         .collect(Collectors.toList()))
                 );
     }

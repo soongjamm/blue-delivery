@@ -2,7 +2,7 @@ package com.bluedelivery.shop.application;
 
 import java.time.LocalDate;
 
-import com.bluedelivery.shop.domain.closingday.TemporaryClosing;
+import com.bluedelivery.shop.domain.holiday.TemporaryHolidayPolicy;
 
 import lombok.NoArgsConstructor;
 
@@ -23,8 +23,8 @@ public class TemporaryClosingParam {
         this.to = to;
     }
     
-    public TemporaryClosing toEntity() {
-        return new TemporaryClosing(this.from, this.to);
+    public TemporaryHolidayPolicy toEntity() {
+        return new TemporaryHolidayPolicy(this.from, this.to);
     }
     
     public LocalDate getFrom() {

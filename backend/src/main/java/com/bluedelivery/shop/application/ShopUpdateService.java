@@ -2,8 +2,11 @@ package com.bluedelivery.shop.application;
 
 import static com.bluedelivery.common.response.ErrorCode.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
+import com.bluedelivery.shop.domain.holiday.LegalHolidayPolicy;
+import com.bluedelivery.shop.interfaces.SuspensionPeriod;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,8 +19,6 @@ import com.bluedelivery.shop.domain.BusinessHour;
 import com.bluedelivery.shop.domain.DeliveryArea;
 import com.bluedelivery.shop.domain.Shop;
 import com.bluedelivery.shop.domain.ShopRepository;
-import com.bluedelivery.shop.domain.closingday.LegalHolidayClosing;
-import com.bluedelivery.shop.domain.closingday.Suspension;
 import com.bluedelivery.shop.interfaces.UpdateCategoryRequest;
 import com.bluedelivery.shop.interfaces.UpdateClosingDaysRequest;
 
@@ -70,8 +71,8 @@ public class ShopUpdateService {
         List<RegularClosingParam> regulars = closingDays.getRegularClosing();
         Shop shop = getShop(id);
         
-        if (closingOnLegalHolidays) {
-            shop.addClosingDayPolicy(new LegalHolidayClosing());
+        if (Boolean.TRUE.equals(closingOnLegalHolidays)) {
+            shop.addClosingDayPolicy(new LegalHolidayPolicy());
         }
         temporaries.forEach(temporary -> shop.addClosingDayPolicy( temporary.toEntity()));
         regulars.forEach(regular -> shop.addClosingDayPolicy(regular.toEntity()));
@@ -82,9 +83,9 @@ public class ShopUpdateService {
         shop.updateExposeStatus(status);
     }
     
-    public void suspend(Long shopId, Suspension suspension) {
+    public void suspend(Long shopId, SuspensionPeriod suspensionPeriod) {
         Shop shop = getShop(shopId);
-        shop.addClosingDayPolicy(suspension);
+        shop.suspendUntil(suspensionPeriod.from(LocalDateTime.now()));
     }
     
     @Transactional

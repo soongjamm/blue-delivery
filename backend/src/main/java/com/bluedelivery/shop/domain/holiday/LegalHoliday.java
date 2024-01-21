@@ -1,7 +1,7 @@
-package com.bluedelivery.shop.domain.closingday;
+package com.bluedelivery.shop.domain.holiday;
 
-import static com.bluedelivery.shop.domain.closingday.LegalHoliday.CalendarType.LUNAR;
-import static com.bluedelivery.shop.domain.closingday.LegalHoliday.CalendarType.SOLAR;
+import static com.bluedelivery.shop.domain.holiday.LegalHoliday.CalendarType.LUNAR;
+import static com.bluedelivery.shop.domain.holiday.LegalHoliday.CalendarType.SOLAR;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -35,10 +35,9 @@ public enum LegalHoliday {
     CHRISTMAS(SOLAR, Month.DECEMBER, 25);
     
     
-    private CalendarType calendarType;
-    private Month month;
-    
-    private int day;
+    private final CalendarType calendarType;
+    private final Month month;
+    private final int day;
     
     LegalHoliday(CalendarType calendarType, Month month, int day) {
         this.calendarType = calendarType;
@@ -131,6 +130,6 @@ public enum LegalHoliday {
     }
     
     enum CalendarType {
-        LUNAR, SOLAR;
+        LUNAR, SOLAR
     }
 }
