@@ -2,7 +2,6 @@ plugins {
     id 'java'
     id 'io.freefair.lombok'
     id 'org.springframework.boot'
-    id 'io.spring.dependency-management'
 }
 
 group = "${artifactGroup}"
@@ -30,6 +29,7 @@ dependencies {
     implementation 'com.h2database:h2:1.4.200'
     implementation 'com.github.ben-manes.caffeine:caffeine:3.0.2'
     implementation 'net.time4j:time4j-base:5.7' // time4j 음력->양력 변환을 위해 사용
+    implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
 
     // swagger
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
