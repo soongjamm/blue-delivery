@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+    <variable name="LOG_FILE" value="./logs/spring.log"/>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <append>true</append>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+        <file>${LOG_FILE}</file>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE"/>
+</included>
