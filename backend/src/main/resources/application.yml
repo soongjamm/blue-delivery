@@ -46,17 +46,5 @@ management:
     git:
       mode: simple # simple or pull
 
-mybatis:
-  mapper-locations: mybatis/mapper/*.xml
-  type-aliases-package:
-    com.bluedelivery.domain.shop,
-    com.bluedelivery.domain.category,
-    com.bluedelivery.application.shop.businesshour,
-    com.bluedelivery.shop.domain.closingday,
-    com.bluedelivery.domain.suspension,
-    com.bluedelivery.user.domain,
-    com.bluedelivery.utility,
-    org.apache.ibatis.type
-
 logging:
   config: classpath:logback/logback-spring.xml

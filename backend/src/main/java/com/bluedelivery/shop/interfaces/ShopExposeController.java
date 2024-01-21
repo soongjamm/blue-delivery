@@ -17,7 +17,6 @@ public interface ShopExposeController {
      *
      * @param id 카테고리 id
      * @return 카테고리에 해당되는 가게의 정보 list
-     * @see mybatis/mapper/CategoryMapper.xml $findShopsByCategoryId
      */
     @GetMapping("/categories/{categoryId}/shops")
     ResponseEntity<GetShopsByCategoryResponse> getShopsByCategory(@PathVariable("categoryId") Long id);
